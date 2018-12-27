@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MobWebTesteAplication</title>
+        
+        <link rel="stylesheet" href="./theme/primeui-4.1.15/themes/afterdark/theme.css" />
+        <link rel="stylesheet" type="text/css" href="font/css/all.min.css" />
+        
+
+        <script type="text/javascript" src="./theme/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./theme/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="./JS/script.js"></script>
+        
+
+        <link rel="stylesheet" href="./theme/primeui-4.1.15/primeui.min.css" />
+        <link rel="stylesheet" href="./theme/primeui-4.1.15/primeui-all.min.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        
+        <script type="text/javascript" src="./theme/primeui-4.1.15/primeui.min.js"></script>
+        <script type="text/javascript" src="./theme/primeui-4.1.15/primeui-all.min.js"></script>
+        <script type="text/javascript" src="./JS/x-tag-core.min.js"></script>
+        <script type="text/javascript" src="./theme/primeui-4.1.15/primeelements.min.js"></script>
+        
+        <script type="text/javascript" src="./theme/primeui-4.1.15/plugins/mustache.min.js"></script>
+        
+        <script type="text/Javascript" >
+        
+        $(function() {
+            var localData = [
+                {'brand': 'Volkswagen', 'year': 2012, 'color': 'White', 'vin': 'dsad231ff'},
+                {'brand': 'Audi', 'year': 2011, 'color': 'Black', 'vin': 'gwregre345'},
+                {'brand': 'Renault', 'year': 2005, 'color': 'Gray', 'vin': 'h354htr'},
+                {'brand': 'BMW', 'year': 2003, 'color': 'Blue', 'vin': 'j6w54qgh'},
+                {'brand': 'Mercedes', 'year': 1995, 'color': 'White', 'vin': 'hrtwy34'},
+                {'brand': 'Volvo', 'year': 2005, 'color': 'Black', 'vin': 'jejtyj'},
+                {'brand': 'Honda', 'year': 2012, 'color': 'Yellow', 'vin': 'g43gr'},
+                {'brand': 'Jaguar', 'year': 2013, 'color': 'White', 'vin': 'greg34'},
+                {'brand': 'Ford', 'year': 2000, 'color': 'Black', 'vin': 'h54hw5'},
+                {'brand': 'Fiat', 'year': 2013, 'color': 'Red', 'vin': '245t2s'}
+            ];
+     
+            $('#tbllocal').puidatatable({
+                caption: 'Local Datasource',
+                columns: [
+                    {field: 'vin', headerText: 'Vin'},
+                    {field: 'brand', headerText: 'Brand'},
+                    {field: 'year', headerText: 'Year'},
+                    {field: 'color', headerText: 'Color'}
+                ],
+                datasource: localData,
+                selectionMode: 'single',
+                rowSelect: function (event, data) {
+                    $('#messages').puigrowl('show', [{ severity: 'info', summary: 'Row Selected', detail: (data.IdUser + ' ' + data.NomeCompleto) }]);
+                },
+                rowUnselect: function (event, data) {
+                    $('#messages').puigrowl('show', [{ severity: 'info', summary: 'Row Unselected', detail: (data.IdUser + ' ' + data.NomeCompleto) }]);
+                }
+            })}
+);
+        </script>
+        
+    </head>
+    <body>
+         
+        <h3>MobWeb -  testeCRUD</h3>
+        
+         <p-menubar>
+            
+            <p-submenu value="File" icon="fa-file-o">
+                
+                <p-submenu value="New" icon="fa-plus">
+                    
+                    <p-menuitem value="Project"></p-menuitem>
+                    
+                    <p-menuitem value="Other"></p-menuitem>
+                
+                </p-submenu>
+                
+                <p-menuitem value="Open"></p-menuitem>
+                
+                <p-menuitem value="Quit"></p-menuitem>
+            
+            </p-submenu>
+            
+            <p-submenu value="Edit" icon="fa-edit">
+                
+                <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+                
+                <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+            
+            </p-submenu>
+            
+            <p-submenu value="Help" icon="fa-question">
+                
+                <p-menuitem value="Contents"></p-menuitem>
+                
+                <p-submenu value="Search" icon="fa-search">
+                    
+                    <p-submenu value="Text">
+                        
+                        <p-menuitem value="Workspace"></p-menuitem>
+                    
+                    </p-submenu>
+                    
+                    <p-menuitem value="File"></p-menuitem>
+                
+                </p-submenu>
+            
+            </p-submenu>
+            
+            <p-submenu value="Action" icon="fa-gear">
+                
+                <p-submenu value="Edit" icon="fa-refresh">
+                    
+                    <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+                    
+                    <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+                
+                </p-submenu>
+                
+                <p-submenu value="Other" icon="fa-phone">
+                    
+                    <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+                
+                </p-submenu>
+            
+            </p-submenu>
+            
+            <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+        
+        </p-menubar>
+        <div class="ui-grid ui-grid-responsive" style="margin-top: 2%">
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">    
+                </div>
+                <button is="p-button" icon="fa-plus-circle" class="ui-grid-col-2" id="btn-show" type="button"  onclick="document.getElementById('dlgelement').show()">Adicionar</button>
+                <button is="p-button" icon="fa-edit" class="ui-grid-col-2">Editar</button>
+                <input type="text" is="p-inputtext" value="" size="30" />  
+                <button is="p-button" icon="fa-search" ></button>
+                <button is="p-button" icon="fa-trash" class="ui-grid-col-2">Excluir</button>
+                  
+                    <!-- <div class="ui-grid-col-10">
+                        <button is="p-button" icon="fa-home">PrimeElement</button>
+                    </div> -->
+
+            </div>
+
+            <div class="ui-grid-row"  style="margin-top: 0.5%">
+                <div class="ui-grid-col-2">
+                        <p-slidemenu>
+                                                <p-submenu value="File" icon="fa-file-o">
+                                                    <p-submenu value="New" icon="fa-plus">
+                                                        <p-menuitem value="Project"></p-menuitem>
+                                                        <p-menuitem value="Other"></p-menuitem>
+                                                    </p-submenu>
+                                                    <p-menuitem value="Open"></p-menuitem>
+                                                    <p-menuitem value="Quit"></p-menuitem>
+                                                </p-submenu>
+                                                <p-submenu value="Edit" icon="fa-edit">
+                                                    <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+                                                    <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+                                                </p-submenu>
+                                                <p-submenu value="Help" icon="fa-question">
+                                                    <p-menuitem value="Contents"></p-menuitem>
+                                                    <p-submenu value="Search" icon="fa-search">
+                                                        <p-submenu value="Text">
+                                                            <p-menuitem value="Workspace"></p-menuitem>
+                                                        </p-submenu>
+                                                        <p-menuitem value="File"></p-menuitem>
+                                                    </p-submenu>
+                                                </p-submenu>
+                                                <p-submenu value="Action" icon="fa-gear">
+                                                    <p-submenu value="Edit" icon="fa-refresh">
+                                                        <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+                                                        <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+                                                    </p-submenu>
+                                                    <p-submenu value="Other" icon="fa-phone">
+                                                        <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+                                                    </p-submenu>
+                                                </p-submenu>
+                                                <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+                                    
+                        </p-slidemenu>
+
+                </div>
+                <div class="ui-grid-col-10">
+                    <div id="tbllocal"></div>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <p-dialog id="dlgelement" title="Godfather I" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400">
+                
+            <div class="ui-grid-row"  style="margin-top: 0.5%">
+                        <div class="ui-grid-col-10">
+
+                        </div>
+
+                        <div class="ui-grid-col-2">
+                                Nome Completo
+                                <input type="text" is="p-inputtext" value="" size="30" />  
+                                Apelido
+                                <input type="text" is="p-inputtext" value="" size="30" />  
+                                E-mail
+                                <input type="text" is="p-inputtext" value="" size="30" />  
+                                Telefone
+                                <input type="text" is="p-inputtext" value="" size="30" />  
+                                Senha
+                                <input type="text" is="p-inputtext" value="" size="30" />  
+                        </div>
+                        
+            </div>
+
+            
+            
+            
+            <script type="x-facet-buttons">
+                <button type="button" is="p-button" icon="fa-close" onclick="document.getElementById('dlgelement').hide()">Cancelar</button>
+                <button type="button" is="p-button" icon="fa-check" onclick="document.getElementById('dlgelement').hide()">Salvar</button>
+                
+            </script>   
+        </p-dialog>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ManageResources.DataModel.Usuario
+
+@using (Html.BeginForm("ValidLogin", "Home", FormMethod.Post))
+{
+
+    <p-dialog id="dlgelementLogin" title="Novo Registro" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400" visible ="true">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+
+
+            <div class="ui-grid-col-2">
+
+                E-mail
+                @Html.EditorFor(model => Model.Email, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "email" } })
+
+                Senha
+                @Html.EditorFor(model => Model.Senha, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "senha" } })
+            </div>
+            @if (TempData["notice"] != null)
+            {
+                <div style="color:red">@TempData["notice"] </div>
+            }
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">
+            <button type="submit" is="p-button" icon="fa-check">Login</button>
+            <button type="button" is="p-button" onclick="AddNeww()" icon="fa-check">Cadastrar-se!</button>
+        </script>
+    </p-dialog>
+}
+
+
+@*<script>document.getElementById('dlgelementLogin').show();</script>*@
+@Scripts.Render("~/JS/script.js")

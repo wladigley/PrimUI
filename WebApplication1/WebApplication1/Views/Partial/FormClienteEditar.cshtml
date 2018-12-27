@@ -1,0 +1,49 @@
+﻿    <p-dialog id="dlgelementClienteEdit" title="Adicionar Registro" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+
+            <div class="ui-grid-col-2">
+
+                <label>RazaoSocial</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditRazaoSocial" />
+
+                <label>NomeFantasia</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditNomeFantasia" />
+
+                <label>CNPJ</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditCNPJ" />
+
+                <label>Logradouro</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditLogradouro" />
+
+                <label>Numero</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditNumero" />
+
+
+                <label>Bairro</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditBairro" />
+
+                <label>Complemento</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditComplemento" />
+
+                <label>Municipio</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditMunicipio" />
+
+                <label>Estado</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditEstado" />
+
+                <label>CEP</label>
+                <input type="text" is="p-inputtext" value="" size="30" Id="EditCEP" />
+
+
+            </div>
+
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">
+
+            <button type="button" is="p-button" icon="fa-close" onclick="document.getElementById('dlgelementClienteEdit').hide()">Cancelar</button>
+            <button type="button" is="p-button" icon="fa-check" onclick="ConfirmEditarCliente()">Salvar</button>
+
+        </script>
+    </p-dialog>

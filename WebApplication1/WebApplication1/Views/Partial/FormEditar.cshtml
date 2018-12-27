@@ -1,0 +1,31 @@
+﻿
+    <p-dialog id="dlgelement2" title="Editar Registro" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+
+            <div class="ui-grid-col-2">
+                <div class="ui-grid-col-12" id="idUsuLabel2">
+                    Codigo: <label id="idUsu"></label>
+                </div>
+
+                Nome Completo
+                <input type="text" is="p-inputtext" value="" size="30" Id="nome2" />
+                Apelido
+                <input type="text" is="p-inputtext" value="" size="30" Id="apelido2" />
+                E-mail
+                <input type="text" is="p-inputtext" value="" size="30" Id="email2" />
+                Telefone
+                <input type="text" is="p-inputtext" value="" size="30" Id="telefone2" />
+                Senha
+                <input type="text" is="p-inputtext" value="" size="30" Id="senha2" />
+            </div>
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">                              
+            
+            <button type="button" is="p-button" icon="fa-close" onclick="document.getElementById('dlgelement2').hide()">Cancelar</button>
+            <button type="button" is="p-button" icon="fa-check" onclick="ConfirmEditar()">Salvar</button>
+
+        </script>
+    </p-dialog>
+

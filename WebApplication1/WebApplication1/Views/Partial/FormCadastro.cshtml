@@ -1,0 +1,43 @@
+﻿@model ManageResources.DataModel.Usuario
+
+@using (Html.BeginForm("AdicionarUser", "Home", FormMethod.Post))
+{
+
+    <p-dialog id="dlgelement" title="Adicionar Registro" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+
+            <div class="ui-grid-col-2">
+                <div class="ui-grid-col-12" id="idUsuLabel2">
+                    Codigo: <label id="idUsu"></label>
+                </div>
+
+                        <label>Nome Completo</label>
+                        @Html.EditorFor(model => Model.NomeCompleto, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "nome" } })
+
+                        <label>    Apelido</label>
+                        @Html.EditorFor(model => Model.Apelido, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "apelido" } })
+
+                        <label>E-mail</label>
+                        @Html.EditorFor(model => Model.Email, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "email" } })
+
+                        <label>Telefone</label>
+                        @Html.EditorFor(model => Model.Telefone, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "telefone" } })
+
+                        <label>Senha</label>
+                        @Html.EditorFor(model => Model.Senha, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "senha" } })
+
+                        
+
+            </div>
+
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">
+
+            <button type="button" is="p-button" icon="fa-close" onclick="document.getElementById('dlgelement').hide()">Cancelar</button>
+            <button type="submit" is="p-button" icon="fa-check" ">Salvar</button>
+
+        </script>
+    </p-dialog>
+}

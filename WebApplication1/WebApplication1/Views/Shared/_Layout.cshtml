@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MobWebTesteAplication</title>
+
+    <link charset="UTF-8" rel="stylesheet" href="../../theme/primeui-4.1.15/themes/Start/theme.css" />
+    <link charset="UTF-8" rel="stylesheet" type="text/css" href="../../font/css/all.min.css" />
+
+
+    <script charset="UTF-8" type="text/javascript" src="../../theme/jquery-3.3.1.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="../../theme/jquery-ui.min.js"></script>
+
+    <script charset="UTF-8" type="text/javascript" src="../../JS/script.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="../../JS/ClienteScript.js"></script>
+
+
+    <link charset="UTF-8" rel="stylesheet" href="/theme/primeui-4.1.15/primeui.min.css" />
+    <link charset="UTF-8" rel="stylesheet" href="/theme/primeui-4.1.15/primeui-all.min.css" />
+    <link charset="UTF-8" rel="stylesheet" href="../../css/style.css" />
+
+    <script charset="UTF-8" type="text/javascript" src="/theme/primeui-4.1.15/primeui.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="/theme/primeui-4.1.15/primeui-all.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="/JS/x-tag-core.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="/theme/primeui-4.1.15/primeelements.min.js"></script>
+
+    <script charset="UTF-8" type="text/javascript" src="/theme/primeui-4.1.15/plugins/mustache.min.js"></script>
+
+
+</head>
+<body>
+    <div style="text-align:center"> <p>MobWeb -<b>TESTE</b></p></div>
+
+
+    <p-menubar>
+
+        <p-submenu value="File" icon="fa-file-o">
+
+            <p-submenu value="New" icon="fa-plus">
+
+                <p-menuitem value="Project"></p-menuitem>
+
+                <p-menuitem value="Other"></p-menuitem>
+
+            </p-submenu>
+
+            <p-menuitem value="Open"></p-menuitem>
+
+            <p-menuitem value="Quit"></p-menuitem>
+
+        </p-submenu>
+
+        <p-submenu value="Edit" icon="fa-edit">
+
+            <p-menuitem value="Undo" icon="fa-mail-forward"></p-menuitem>
+
+            <p-menuitem value="Redo" icon="fa-mail-reply"></p-menuitem>
+
+        </p-submenu>
+
+        <p-submenu value="Help" icon="fa-question">
+
+            <p-menuitem value="Contents"></p-menuitem>
+
+            <p-submenu value="Search" icon="fa-search">
+
+                <p-submenu value="Text">
+
+                    <p-menuitem value="Workspace"></p-menuitem>
+
+                </p-submenu>
+
+                <p-menuitem value="File"></p-menuitem>
+
+            </p-submenu>
+
+        </p-submenu>
+
+        <p-submenu value="Action" icon="fa-gear">
+
+            <p-submenu value="Edit" icon="fa-refresh">
+
+                <p-menuitem value="Save" icon="fa-save"></p-menuitem>
+
+                <p-menuitem value="Update" icon="fa-save"></p-menuitem>
+
+            </p-submenu>
+
+            <p-submenu value="Other" icon="fa-phone">
+
+                <p-menuitem value="Delete" icon="fa-minus"></p-menuitem>
+
+            </p-submenu>
+
+        </p-submenu>
+
+        <p-menuitem value="Quit" icon="fa-close"></p-menuitem>
+        @{
+            if (Session["UsuarioLogado"] == "true")
+            {
+                <span> Bem Vindo, </span><b style="font-size:16pt">@Session["NomeUser"]</b>
+            }
+        }
+        
+    </p-menubar>
+    <div class="ui-grid ui-grid-responsive" style="margin-top: 2%">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+                <h3>@ViewBag.BehaviorManage</h3>
+            </div>
+            <div class="ui-grid-col-10">
+                <div class="ui-grid-row">
+                    @{
+                        if (ViewBag.Manager != 2)
+                        {
+                            <button is="p-button" icon="fa-plus-circle" class="ui-grid-col-2" id="btn-show" type="button" onclick="AddNeww()">Adicionar</button>
+                            <button is="p-button" icon="fa-edit" class="ui-grid-col-2" onclick="Edit()">Editar</button>
+                            <input type="text" is="p-inputtext" placeholder="Procurar pela Id" size="30" id="Procurar" />
+                            <button is="p-button" icon="fa-search" onclick="executarPesq()"></button>
+                            <button is="p-button" icon="fas fa-sync-alt" onclick="CarregarTabelaMatriz()"></button>
+                            <button is="p-button" icon="fa-trash" class="ui-grid-col-2" onclick="validarDelete()">Excluir</button>
+                        }
+                        else
+                        {
+                            <button is="p-button" icon="fa-plus-circle" class="ui-grid-col-2" id="btn-show" type="button" onclick="AddNewwCliente()">Adicionar</button>
+                            <button is="p-button" icon="fa-edit" class="ui-grid-col-2" onclick="ClienteEdit()">Editar</button>
+                            <input type="text" is="p-inputtext" placeholder="Procurar pela Id" size="30" id="ProcurarCliente" />
+                            <button is="p-button" icon="fa-search" onclick="executarPesqCliente()"></button>
+                            <button is="p-button" icon="fas fa-sync-alt" onclick="CarregarTabelaCliente()"></button>
+                            <button is="p-button" icon="fa-trash" class="ui-grid-col-2" onclick="validarDeleteCliente()">Excluir</button>
+                        }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+            <div class="ui-grid-col-2">
+
+
+
+                <p-slidemenu>
+                    <p-menuitem value="Usuario" href="@Url.Action("Index","Home")" icon="fa fa-user"></p-menuitem>
+                    <p-menuitem value="Clientes" href="@Url.Action("ClienteBoard","Home")" icon="fa fa-users"></p-menuitem>
+                    <p-menuitem value="Logout" href="@Url.Action("LogOut","Home")" icon="fa-power-off"></p-menuitem>
+
+                </p-slidemenu>
+
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    @Html.Action("PartialFormCadastro", "Partial")
+    @Html.Action("_PartialFormEditar", "Partial")
+    @Html.Action("PartialFormClienteCadastro", "Partial")
+    @Html.Action("PartialFormClienteEditar", "Partial")
+
+
+    <p-dialog id="dlgelement_Delete" title="ATENÇÂO!" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="200" height="100">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+            <p>DESEJA REALMENTE <strong>DELETAR</strong> O REGISTRO?</p>
+
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">
+            <button type="button" is="p-button" icon="fa-remove" onclick="document.getElementById('dlgelement_Delete').hide()">NÃO</button>
+            @{
+                if (ViewBag.Manager != 2)
+                {
+                    <button type="button" is="p-button" icon="fa-check" onclick="DeletarRegistro()">SIM</button>
+                }
+                else
+                {
+                    <button type="button" is="p-button" icon="fa-check" onclick="DeletarRegistroCliente()">SIM</button>
+                }
+            }
+
+
+        </script>
+    </p-dialog>
+
+    <div id="puigrowlSelectRow" />
+    <div id="puigrowSucesso" />
+
+</body>
+</html>

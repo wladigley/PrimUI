@@ -1,0 +1,56 @@
+﻿@model ManageResources.DataModel.Cliente
+
+@using (Html.BeginForm("AdicionarCliente", "Home", FormMethod.Post))
+{
+
+    <p-dialog id="dlgelementCliente" title="Adicionar Registro" modal showeffect="fade" hideeffect="fade" renderdelay="10" width="600" height="400">
+
+        <div class="ui-grid-row" style="margin-top: 0.5%">
+
+            <div class="ui-grid-col-2">
+                
+                <label>RazaoSocial</label>
+                @Html.EditorFor(model => Model.RazaoSocial, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "RazaoSocial" } })
+
+                <label>NomeFantasia</label>
+                @Html.EditorFor(model => Model.NomeFantasia, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "NomeFantasia" } })
+
+                <label>CNPJ</label>
+                @Html.EditorFor(model => Model.CNPJ, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "CNPJ" } })
+
+                <label>Logradouro</label>
+                @Html.EditorFor(model => Model.Logradouro, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Logradouro" } })
+
+                <label>Numero</label>
+                @Html.EditorFor(model => Model.Numero, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Numero" } })
+
+
+                <label>Bairro</label>
+                @Html.EditorFor(model => Model.Bairro, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Bairro" } })
+
+                <label>Complemento</label>
+                @Html.EditorFor(model => Model.Complemento, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Complemento" } })
+
+                <label>Municipio</label>
+                @Html.EditorFor(model => Model.Municipio, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Municipio" } })
+
+                <label>Estado</label>
+                @Html.EditorFor(model => Model.Estado, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "Estado" } })
+
+                <label>CEP</label>
+                @Html.EditorFor(model => Model.CEP, new { htmlAttributes = new { @Class = "ui-inputtext ui-widget ui-state-default ui-corner-all inputForm", @style = "size:30", @Id = "CEP" } })
+
+
+            </div>
+
+        </div>
+
+        <script charset="UTF-8" type="x-facet-buttons">
+
+            <button type="button" is="p-button" icon="fa-close" onclick="document.getElementById('dlgelementCliente').hide()">Cancelar</button>
+            <button type="submit" is="p-button" icon="fa-check" ">Salvar</button>
+
+        </script>
+    </p-dialog>
+}
+
